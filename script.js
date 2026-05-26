@@ -1,5 +1,5 @@
 // La tua password è "MioSito2026" (Puoi generare il codice Base64 della tua password su b64.io)
-const passwordCifrata = "forzamercedes2026"; 
+const passwordCifrata = "Zm9yemFtZXJjZWRlczIwMjY="; 
 
 // Controlla se l'utente ha già inserito la password corretta in passato
 if (localStorage.getItem("sito_autorizzato") !== "true") {
