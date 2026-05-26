@@ -1,17 +1,23 @@
-// La tua password è "MioSito2026" (Puoi generare il codice Base64 della tua password su b64.io)
-const passwordCifrata = "Zm9yemFtZXJjZWRlczIwMjY="; 
+// Scrivi qui la tua password reale tra le virgolette (es. "MiaPassword123")
+const passwordCorretta = "MioSito2026"; 
 
-// Controlla se l'utente ha già inserito la password corretta in passato
-if (localStorage.getItem("sito_autorizzato") !== "true") {
-  
+// Funzione principale che controlla l'accesso
+function controllaAccesso() {
+  // Se l'utente è già stato autorizzato in passato, interrompe la funzione e mostra il sito
+  if (localStorage.getItem("sito_autorizzato") === "true") {
+    return; 
+  }
+
   let tentativo = prompt("Sito protetto. Inserisci la password per accedere:");
-  
-  // Converte il tentativo in Base64 e lo confronta con la password cifrata
-  if (tentativo && btoa(tentativo) === passwordCifrata) {
-    // Salva l'accesso nel browser: non verrà più richiesto
+
+  // Controlla se il tentativo è corretto (elimina anche eventuali spazi vuoti per errore)
+  if (tentativo && tentativo.trim() === passwordCorretta) {
     localStorage.setItem("sito_autorizzato", "true");
   } else {
     alert("Password errata! Accesso negato.");
     window.location.href = "https://google.com";
   }
 }
+
+// Avvia il controllo immediatamente
+controllaAccesso();
